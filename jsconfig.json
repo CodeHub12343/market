@@ -3,5 +3,8 @@
     "paths": {
       "@/*": ["./src/*"]
     }
+  },
+  "experimental": {
+    "optimizePackageImports": ["styled-components"]
   }
 }
