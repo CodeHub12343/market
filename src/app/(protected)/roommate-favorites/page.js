@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import Link from 'next/link'
 import { Heart, AlertCircle } from 'lucide-react'
-import { useFavorites } from '@/hooks/useRoommates'
+import { useFavorites } from '@/hooks/useFavorites'
 import { RoommateGrid } from '@/components/roommates/RoommateGrid'
 import { RoommateSearchBar } from '@/components/roommates/RoommateSearchBar'
-import { LoadingSpinner } from '@/components/common/LoadingSpinner'
+import LoadingSpinner from '@/components/common/LoadingSpinner'
 import ErrorAlert from '@/components/common/ErrorAlert'
 
 const PageContainer = styled.div`
