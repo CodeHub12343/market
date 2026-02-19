@@ -13,9 +13,9 @@ import {
   useMarkReviewHelpful,
   useRatingStats,
 } from '@/hooks/useReviews';
-import ReviewForm from './ReviewForm';
-import ReviewCard from './ReviewCard';
-import RatingDistribution from './RatingDistribution';
+import ReviewForm from '@/components/reviews/ReviewForm';
+import ReviewCard from '@/components/reviews/ReviewCard';
+import RatingDistribution from '@/components/reviews/RatingDistribution';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
