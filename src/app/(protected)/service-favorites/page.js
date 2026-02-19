@@ -217,7 +217,7 @@ const SearchContainer = styled.div`
   }
 `;
 
-const Grid = styled.div`
+const ServiceGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
@@ -378,7 +378,7 @@ const BottomNavWrapper = styled.div`
   }
 `;
 
-const LoadingGrid = styled(Grid)`
+const LoadingGrid = styled(ServiceGrid)`
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
@@ -482,7 +482,7 @@ export default function ServiceFavoritesPage() {
             </LoadingGrid>
           ) : services.length > 0 ? (
             <>
-              <Grid>
+              <ServiceGrid>
                 {services.map((service) => (
                   <ServiceCard key={service._id}>
                     <ServiceImage
@@ -512,7 +512,7 @@ export default function ServiceFavoritesPage() {
                     </ServiceContent>
                   </ServiceCard>
                 ))}
-              </Grid>
+              </ServiceGrid>
 
               {pagination.pages && pagination.pages > 1 && (
                 <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginTop: '24px' }}>
