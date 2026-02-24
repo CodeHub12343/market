@@ -1,20 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { StyleSheetManager } from 'styled-components';
 
 export default function StyledComponentsRegistry({ children }) {
   const [mounted, setMounted] = useState(false);
+  const [styledTarget, setStyledTarget] = useState(null);
 
   useEffect(() => {
-    // Hydration fix - defer mount state update
-    const timer = setTimeout(() => setMounted(true), 0);
-    return () => clearTimeout(timer);
+    // Prevent styled-components from breaking in browser
+    setMounted(true);
   }, []);
 
-  // Prevents hydration mismatch by not rendering until client-side
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return <>{children}</>;
 
-  return <>{children}</>;
+  return (
+    <StyleSheetManager shouldForwardProp={(prop) => !prop.startsWith('$')}>
+      {children}
+    </StyleSheetManager>
+  );
 }

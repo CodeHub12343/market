@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Inter } from "next/font/google";
 import { AuthProvider } from "@/context/AuthContext";
 import Providers from "@/components/Providers";
+import StyledComponentsRegistry from "@/lib/registry";
 import { SocketProvider } from '@/context/SocketContext';
 import { NotificationProvider } from '@/context/NotificationContext';
 import { ToastProvider } from '@/context/ToastContext';
@@ -57,19 +58,21 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
       </head>
       <body className={inter.className}>
-        <Providers>
-          <AuthProvider>
-            <ToastProvider>
-              <SocketProvider>
-                <NotificationProvider>
-                  {/* ✅ Lazy load to avoid blocking render */}
-                  <WebVitalsReporter />
-                  {children}
-                </NotificationProvider>
-              </SocketProvider>
-            </ToastProvider>
-          </AuthProvider>
-        </Providers>
+        <StyledComponentsRegistry>
+          <Providers>
+            <AuthProvider>
+              <ToastProvider>
+                <SocketProvider>
+                  <NotificationProvider>
+                    {/* ✅ Lazy load to avoid blocking render */}
+                    <WebVitalsReporter />
+                    {children}
+                  </NotificationProvider>
+                </SocketProvider>
+              </ToastProvider>
+            </AuthProvider>
+          </Providers>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
