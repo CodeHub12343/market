@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import styled from "styled-components"
 import { Star, Heart, ChevronRight } from "lucide-react"
 import { useProducts } from "@/hooks/useProducts"
@@ -306,6 +307,14 @@ const CarCard = styled.div`
   &:active {
     transform: translateY(-1px);
   }
+`
+
+// ===== CAR CARD LINK =====
+const CarCardLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
 `
 
 // ===== IMAGE CONTAINER =====
@@ -617,7 +626,8 @@ export function TopDeals() {
       </FiltersContainer>
       <CarsGrid>
         {products.map((product) => (
-          <CarCard key={product._id}>
+          <CarCardLink key={product._id} href={`/products/${product._id}`}>
+            <CarCard>
             <ImageContainer>
               <img
                 src={product.images?.[0] || "/placeholder.svg"}
@@ -651,7 +661,8 @@ export function TopDeals() {
               </ConditionTag>
             </CarMeta>
             <CarPrice>₦{product.price?.toLocaleString()}</CarPrice>
-          </CarCard>
+            </CarCard>
+          </CarCardLink>
         ))}
       </CarsGrid>
     </Section>
